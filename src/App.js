@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Progress } from 'reactstrap';
 import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
 
 class App extends Component {
@@ -27,7 +29,10 @@ class App extends Component {
         }
       })
       .then(res => {
-        console.log(res);
+        toast.success('uploaded successfully.');
+      })
+      .catch(err => {
+        toast.error('uploading failed.');
       });
   };
 
@@ -58,6 +63,9 @@ class App extends Component {
             >
               Upload
             </button>
+            <div className="form-group">
+              <ToastContainer />
+            </div>
           </div>
         </div>
       </div>
